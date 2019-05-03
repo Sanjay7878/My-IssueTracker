@@ -1,0 +1,121 @@
+.jumbotron{
+    text-align: center;
+    margin-top: 50px;
+    margin-right: 15px;
+    margin-left: 15px;
+    background: rgb(243, 223, 186);
+}
+
+.lead{
+    font-family: 'Vollkorn', serif;
+    font-size: 1.5em;
+    letter-spacing: 4px;
+    margin: 10px;
+}
+
+.img-fluid{
+    width: 70%;
+    margin: 15px;
+    border: 1px solid rgb(182, 182, 252);
+    height: 40vh;
+}
+
+.img-thumbnail{
+    align-content: flex-start;
+    width: 15%;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px){
+    .img-thumbnail{
+        width: 30%;
+    }
+}
+
+.register-invite{
+    font-size: 1.2em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.login-div{
+    margin-bottom: 50px;
+}
+
+.want-to-know{
+    text-align: center;
+    padding: 1%;
+    
+}
+
+.features-head{
+    font-size: 1.6em;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+.list-features{
+    text-align: center;
+    
+}
+
+ol{
+    list-style-type: none;
+}
+
+li{
+    text-decoration: none;
+    margin: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 1.2em;
+    font-family: 'Philosopher', sans-serif;
+    letter-spacing: 2px;
+}
+
+.row{
+    background: rgb(212, 228, 250);
+    border: 1px solid black;
+}
+
+i {
+    margin: 5px;
+}
+
+.container-full{
+    width: 100%;
+}
+
+.navbar{
+    background: rgb(41, 41, 41);
+}
+
+.navbar-brand{
+    color: rgb(245, 245, 220);
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 8px;
+    font-weight: bold;
+    text-shadow: 3px 4px rgba(122, 5, 5, 0.979);
+}
+
+.navbar-brand:hover{
+    color: rgb(131, 241, 190);
+}
+
+@media (max-width: 600px){
+    .navbar-brand{
+        font-size: 1.4em;
+        font-weight: bold;
+    }
+
+    .container-full{
+        width: 100%;
+    }
+}
+
+@media (max-width: 340px){
+    .navbar-brand{
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+}
+

@@ -1,0 +1,123 @@
+<div class="container-fluid">
+    <div class="row sidebar">
+      <aside class="col-12 col-md-2 p-0 bg-dark">
+        <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+            <div class="collapse navbar-collapse">
+                <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link pl-0 text-nowrap" [routerLink]="['/dashboard']"><span class="font-weight-bold brand">Sanny's <br> Tracker</span></a>
+                    </li>
+                    <br>
+                    <br>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" [routerLink]="['/dashboard']"><i class="fa fa-home" aria-hidden="true"></i><span class="d-none d-md-inline">Home</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" [routerLink]="['/user-info']"><i class="fa fa-user-o"  aria-hidden="true"></i><span class="d-none d-md-inline">User Info</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" [routerLink]="['/create']" ><i class="fa fa-bug" aria-hidden="true"></i> <span class="d-none d-md-inline">Track a new Bug</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" [routerLink]="['/search/all']"><i class="fa fa-list-ol" aria-hidden="true"></i> <span class="d-none d-md-inline">View all Bugs Recorded</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" (click)="logoutFunction()"><i class="fa fa-power-off" aria-hidden="true"></i> <span class="d-none d-md-inline">Logout</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+        <main class="col bg-faded py-3" *ngIf="currentIssue">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h2 class="title-desc">{{currentIssue.title}} </h2>
+                <P style="text-align:center">created by {{currentIssue.reportedBy}}</P>
+                <br>
+                <div class="row" id="ed-del">
+                  <div class="col-md-11">
+                    <button class="btn" [routerLink]="['/record/edit/', currentIssue.issueId]">Edit</button>
+                  </div>
+                  <div class="col-md-1">
+                    <button class="btn" (click)="deleteIssue()">Delete</button>
+                  </div>
+                </div>
+                <hr>
+                <h3 class="description-head">Issue Description</h3>
+                <p id="description">{{currentIssue.description}}</p>
+                <br>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row">
+                        <p>Status : </p><p class="status-assignTo">{{issueStatus}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="currentIssue.assignee">
+                  <div class="col-md-10">
+                    <div class="row">
+                        <p>AssignedTo : </p><p class="status-assignTo">{{currentIssue.assignee}}</p>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                    <P class="issue-location"><i class="fa fa-thumb-tack" aria-hidden="true"></i>The Issue was encountered in {{currentIssue.issueLocation}} </P>
+                  </div>
+                  <div class="col-md-6">
+                    <p style="text-align:right">The type of Issue is --- {{currentIssue.issueType}} <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></p>
+                  </div>
+                </div>
+                <div *ngIf="screenshot">
+                  <img src='http://localhost:3000/appController/screenshots/{{screenshot}}' alt="..." class="img-thumbnail">
+                </div>
+                <hr>
+                <div class="container" id="comments">
+                  <div class="row bootstrap snippets">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="comment-wrapper">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Comment panel
+                                </div>
+                                <div class="panel-body">
+                                    <textarea class="form-control" placeholder="write a comment..." rows="3" (keydown)="sendMessageUsingKeyPress($event)" [(ngModel)]="comment" ></textarea>
+                                    <br>
+                                    <button type="button" class="btn btn-info pull-right" (click)="postComment()">Post</button>
+                                    <div class="clearfix"></div>
+                                    <hr>
+                                    <div *ngIf="currentComments">
+                                      <ul class="media-list" *ngFor="let comments of currentComments" >
+                                          <li class="media">
+                                              <div class="media-body">
+                                                  <span class="text-muted pull-right">
+                                                      <small class="text-muted">{{comments.createdOn | date:'medium'}}</small>
+                                                  </span>
+                                                  <strong class="text-success">{{comments.commentedBy}}</strong>
+                                                  <div class="row">
+                                                    <div class="col-md-10">
+                                                      <p>{{comments.comment}}</p>
+                                                    </div>
+                                                    <div class="col-md-2"><a (click)="deleteAComment(comments.commentId)"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                                                  </div>  
+                                              </div>
+                                          </li>
+                                      </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </main>
+    </div>
+</div>

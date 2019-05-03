@@ -1,0 +1,85 @@
+<div class="container-fluid">
+        <div class="row sidebar">
+            <aside class="col-12 col-md-2 p-0 bg-dark">
+                <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+                    <div class="collapse navbar-collapse">
+                        <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                            <li class="nav-item">
+                                <a class="nav-link pl-0 text-nowrap" [routerLink]="['/dashboard']"><span class="font-weight-bold brand">Sanny's <br> Tracker</span></a>
+                            </li>
+                            <br>
+                            <br>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" [routerLink]="['/dashboard']"><i class="fa fa-home" aria-hidden="true"></i><span class="d-none d-md-inline">Home</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" [routerLink]="['/user-info']"><i class="fa fa-user-o"  aria-hidden="true"></i><span class="d-none d-md-inline">User Info</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" [routerLink]="['/create']" ><i class="fa fa-bug" aria-hidden="true"></i> <span class="d-none d-md-inline">Track a new Bug</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" [routerLink]="['/search/all']"><i class="fa fa-list-ol" aria-hidden="true"></i> <span class="d-none d-md-inline">View all Bugs Recorded</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" (click)="logoutFunction()"><i class="fa fa-power-off" aria-hidden="true"></i> <span class="d-none d-md-inline">Logout</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <main class="col bg-faded py-3">
+                <div class="container" *ngIf="currentUser">
+                    <h3 class="edit-desc">Edit User Details</h3>
+                    <div class="row" style="text-align:left">
+                        <div class="col-md-12">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>First Name</label>
+                                            <input type="text" name="firstName" [(ngModel)]="currentUser.firstName" class="form-control" placeholder="first name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input type="text" name="lastName" [(ngModel)]="currentUser.lastName"  class="form-control" placeholder="last name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>DOB</label>
+                                    <input type="date" name="dob"  class="form-control" [(ngModel)]="currentUser.dob" placeholder="Enter Date Of Birth">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" [(ngModel)]="currentUser.email" class="form-control" placeholder="e.g  example@example.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <input type="text" name="companyName" [(ngModel)]="currentUser.companyName"  class="form-control" placeholder="company name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Role/Designation</label>
+                                    <input type="text" name="role" [(ngModel)]="currentUser.role"  class="form-control" placeholder="role / designation">
+                                </div>
+                                <div class="form-group">
+                                    <label>Mobile Number</label>
+                                    <input type="number" name="mobileNumber" [(ngModel)]="currentUser.mobileNumber" class="form-control" placeholder="+91 00000">
+                                </div>
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <input type="text" name="location" [(ngModel)]="currentUser.location" class="form-control" placeholder="location">
+                                </div>
+                                <button type="submit" class="btn" (click)="editFunction()">Save </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" *ngIf="!currentUser">
+                    <h4>Some Error Occured. No User Details Found</h4>
+                </div>
+            </main>
+        </div>
+    </div>

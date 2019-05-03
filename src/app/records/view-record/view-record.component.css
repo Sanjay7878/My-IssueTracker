@@ -1,0 +1,120 @@
+.brand {
+    color: rgb(245, 245, 220);
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    letter-spacing: 8px;
+    font-weight: bold;
+    text-shadow: 3px 4px rgba(122, 5, 5, 0.979);
+}
+
+@media (min-width: 960px) and (max-width: 1200px){
+    .brand{
+        font-size: 1.3em;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 960px){
+    .brand{
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 340px){
+    .brand{
+        font-size: 0.7em;
+    }
+}
+
+.sidebar{
+    min-height: 100vh;
+}
+
+@media (max-width: 767px){
+    .sidebar{
+        min-height: 50vh;
+        flex-wrap: wrap;
+    }
+}
+
+i{
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+/*
+***************
+end sidenavbar
+*************** 
+*/
+
+.title-desc{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.description-head{
+    text-align: center;
+    font-size: 25x;
+}
+
+hr {
+   background: grey;
+}
+
+#description{
+    margin-top: 40px;
+    text-align: center; 
+    text-transform: lowercase;
+    word-spacing: 1px;
+    font-size: 20px;
+}
+
+.container .row p{
+    text-align: left;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.status-assignTo{
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.ed-del{
+    display: inline-flex;
+    flex-direction: row;
+}
+
+/*
+*
+*Comments
+*
+*/
+#comments{
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 15px;
+    margin-right: 25px;
+}
+
+.comment-wrapper .panel-body {
+    max-height:650px;
+    overflow:auto;
+    text-align: center;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+
+.status-assignTo{
+    text-transform: capitalize;
+}

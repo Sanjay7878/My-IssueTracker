@@ -1,0 +1,88 @@
+<div class="container-fluid">
+    <div class="row sidebar">
+        <aside class="col-12 col-md-2 p-0 bg-dark">
+            <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+                <div class="collapse navbar-collapse">
+                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li class="nav-item">
+                            <a class="nav-link pl-0 text-nowrap" [routerLink]="['/dashboard']"><span class="font-weight-bold brand">Sanny's <br> Tracker</span></a>
+                        </li>
+                        <br>
+                        <br>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" [routerLink]="['/dashboard']"><i class="fa fa-home" aria-hidden="true"></i><span class="d-none d-md-inline">Home</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" [routerLink]="['/user-info']"><i class="fa fa-user-o"  aria-hidden="true"></i><span class="d-none d-md-inline">User Info</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" [routerLink]="['/create']" ><i class="fa fa-bug" aria-hidden="true"></i> <span class="d-none d-md-inline">Track a new Bug</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" [routerLink]="['/search/all']"><i class="fa fa-list-ol" aria-hidden="true"></i> <span class="d-none d-md-inline">View all Bugs Recorded</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" (click)="logoutFunction()"><i class="fa fa-power-off" aria-hidden="true"></i> <span class="d-none d-md-inline">Logout</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        <main class="col bg-faded py-3">
+            <div class="container-fluid" *ngIf="currentUser">
+                <div class="col-md-12">
+                    <h2 class="user-name">{{userName}}</h2>
+                    <p class="user-work"> Working as a {{currentUser.role}} in {{currentUser.companyName}}</p>
+                </div>
+                <hr>
+                <div class="col-md-12 user-welcome">
+                    <p>Hi {{userName}}, <br>
+                        <br>
+                        Welcome to Sanny's Tracker.<br>
+                        This is best tool to track your day-to-day business. You can track the bugs/error/issues that you face while testing your website.
+                        Once you have created a new bug that you found on your website. You can assign the issue to any other developers. So that they can immediately fix the bug for you.<br>
+                        <br>
+                        In simple words<br>
+                        You can Plan, track, and release world-class software with our Tracking tool used by agile teams.
+                    </p>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-8">
+                    <p class="list-desc">
+                            <i class="fa fa-list" aria-hidden="true"></i> Below is the list of issue records created by you
+                    </p>
+                    </div>
+                    <div class="col-md-4">
+                        <form class="form-inline my-2 my-lg-0">
+                            <i class="fa fa-search" aria-hidden="true"></i><input class="form-control" id="myInput" type="text" placeholder="Search..">
+                        </form>
+                    </div>
+                </div>
+                <div class="row" *ngIf="issueDetails">
+                    <table class="table table-hover"  >
+                        <thead>
+                            <tr>
+                            <th scope="col-md-4">Title</th>
+                            <th scope="col-md-3">Status</th>
+                            <th scope="col-md-3">Created On</th>
+                            <th scope="col-md-2"></th>
+                            </tr>
+                        </thead>
+                        <tbody name="issueDetails" id="myTable" *ngFor="let issue of issueDetails">
+                            <tr>
+                                <td>{{issue.title}}</td>
+                                <td>{{issueStatus}}</td> 
+                                <td>{{issue.issueCreatedOn | date }}</td>
+                                <td><a [routerLink]="['/view/', issue.issueId]"><i class="fa fa-list-alt" aria-hidden="true"></i></a><a [routerLink]="['/record/edit/', issue.issueId]"><i class="fa fa-pencil" aria-hidden="true"></i></a><a (click)="deleteIssue(issue.issueId)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row" *ngIf="!issueDetails">
+                    <p>No User created Issue found</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

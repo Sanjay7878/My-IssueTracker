@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <div class="row sidebar">
+      <aside class="col-12 col-md-2 p-0 bg-dark">
+        <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+            <div class="collapse navbar-collapse">
+                <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link pl-0 text-nowrap" [routerLink]="['/dashboard']"><span class="font-weight-bold brand">Sanny's <br> Tracker</span></a>
+                    </li>
+                    <br>
+                    <br>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" [routerLink]="['/dashboard']"><i class="fa fa-home" aria-hidden="true"></i><span class="d-none d-md-inline">Home</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" [routerLink]="['/user-info']"><i class="fa fa-user-o"  aria-hidden="true"></i><span class="d-none d-md-inline">User Info</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" [routerLink]="['/create']" ><i class="fa fa-bug" aria-hidden="true"></i> <span class="d-none d-md-inline">Track a new Bug</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" [routerLink]="['/search/all']"><i class="fa fa-list-ol" aria-hidden="true"></i> <span class="d-none d-md-inline">View all Bugs Recorded</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" (click)="logoutFunction()"><i class="fa fa-power-off" aria-hidden="true"></i> <span class="d-none d-md-inline">Logout</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+        <main class="col bg-faded py-3">
+            <div class="container-fluid" *ngIf="currentUser">
+                <div class="col-md-12">
+                    <h2 class="user-name">{{userName}}</h2>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-12">
+                      <a class="btn btn-primary btn-lg edit-btn" href="#" role="button" [routerLink]="['/edit', currentUser.userId]">Edit</a>
+                  </div>
+                </div>
+                <table class="table table-borderless" style="text-align:justify">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="font-weight: bold">Fields</th>
+                      <th scope="col">User Details</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="currentUser.firstName">
+                    <tr>
+                      <td scope="row">First Name -</td>
+                      <td>{{currentUser.firstName}}</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="currentUser.lastName">
+                    <tr>
+                      <td scope="row">Last Name -</td>
+                      <td>{{currentUser.lastName}}</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="currentUser.dob">
+                    <tr>
+                      <td scope="row">Date of Birth -</td>
+                      <td>{{currentUser.dob | date: 'MM/dd/yyyy'}}</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="currentUser.email">
+                    <tr>
+                      <td scope="row">Email -</td>
+                      <td>{{currentUser.email}}</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="currentUser.companyName">
+                    <tr>
+                      <td scope="row">Company -</td>
+                      <td>{{currentUser.companyName}}</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="currentUser.role">
+                    <tr>
+                      <td scope="row">Role/Desgination -</td>
+                      <td>{{currentUser.role}}</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="currentUser.mobileNumber">
+                    <tr>
+                      <td scope="row">Mobile Number -</td>
+                      <td>{{currentUser.mobileNumber}}</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="currentUser.location">
+                    <tr>
+                      <td scope="row">Location -</td>
+                      <td>{{currentUser.location}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>

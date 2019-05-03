@@ -1,0 +1,21 @@
+This is a issue tracking tool.
+
+This Applicatyion keeps track of all the bug encountered by the developer or test engineer.
+
+////////////////////////////
+
+Upon accessing the application , The user will be redirected to the Login Page.
+
+1. If the user is using the tool for first time he should register himself and then Login
+
+2. In order to register use the below url and the required parameters needs to be entered
+
+    http://localhost:3000/api/v1/user/signup
+
+    Parameters: 1. firstName
+                2. lastName
+                3. email
+                4. password
+                5. role (e.g: developer, tester, test lead, etc,.)
+
+3. 

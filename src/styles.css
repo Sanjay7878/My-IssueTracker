@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background: rgb(240, 239, 239);
+    font-family: 'Questrial', sans-serif; 
+}
+
+.btn{
+    margin: 10px;
+    background: linear-gradient(45deg, rgba(104, 138, 250, 0.562), rgba(189, 41, 189, 0.808));
+}
+
+.btn:hover{
+    background: linear-gradient(45deg, rgba(98, 80, 255, 0.555), rgba(77, 10, 77, 0.301));
+    color: black;
+}
+
+

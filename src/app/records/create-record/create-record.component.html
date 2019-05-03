@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="row sidebar">
+        <aside class="col-12 col-md-2 p-0 bg-dark">
+            <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+                <div class="collapse navbar-collapse">
+                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li class="nav-item">
+                            <a class="nav-link pl-0 text-nowrap" [routerLink]="['/dashboard']"><span class="font-weight-bold brand">Sanny's <br> Tracker</span></a>
+                        </li>
+                        <br>
+                        <br>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" [routerLink]="['/dashboard']"><i class="fa fa-home" aria-hidden="true"></i><span class="d-none d-md-inline">Home</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" [routerLink]="['/user-info']"><i class="fa fa-user-o"  aria-hidden="true"></i><span class="d-none d-md-inline">User Info</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" [routerLink]="['/create']" ><i class="fa fa-bug" aria-hidden="true"></i> <span class="d-none d-md-inline">Track a new Bug</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" [routerLink]="['/search/all']"><i class="fa fa-list-ol" aria-hidden="true"></i> <span class="d-none d-md-inline">View all Bugs Recorded</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-0" (click)="logoutFunction()"><i class="fa fa-power-off" aria-hidden="true"></i> <span class="d-none d-md-inline">Logout</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        <main class="col bg-faded py-3">
+            <div class="container">
+                <div class="row" style="text-align:left">
+                    <div class="col-md-12 main-content">
+                        <h2> Create new Issue/Bug Record</h2>
+                        <form #createIssueForm="ngForm" (ngSubmit)="createNewIssue()" method="POST">
+                            <div class="form-group">
+                                <label> Title</label>
+                                <input type="text" name="title" [(ngModel)]="title"  class="form-control" placeholder="Enter Issue Title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="description" [(ngModel)]="description"  class="form-control" rows="3" placeholder="Provide Brief Description of the Issue" contenteditable required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Issue Location</label>
+                                <input type="text" name="issueLocation" [(ngModel)]="issueLocation"  class="form-control" placeholder="Enter Issue Occured Location" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Type of Issue</label>
+                                <select [(ngModel)]="issueType" name="issueType" class="form-control" id="issueType" required>
+                                    <option *ngFor="let issueType of possibleIssueType" [value]="issueType">{{issueType}}</option>
+                                </select>
+                            </div>
+                            <div class="row" >
+                                <div class="col-md-6">
+                                    <div class="form-group" enctype="multipart/form-data">
+                                        <p>Attach Screenshot</p>
+                                        <input type="file" name="screenshots" class="form-control" [(ngModel)]="screenshots" (change)="onFileSelected($event)" (click)="this.onUpload()" id="screenshots" style="width: 250px">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label >Assign To</label>
+                                        <select [(ngModel)]="assignee" name="assignee" class="form-control" id="assignee" style="width: 200px" required >
+                                            <option *ngFor="let assignee of allUsers" [value]="assignee">{{assignee}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn">Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

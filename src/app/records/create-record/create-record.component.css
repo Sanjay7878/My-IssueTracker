@@ -1,0 +1,83 @@
+.brand {
+    color: rgb(245, 245, 220);
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    letter-spacing: 8px;
+    font-weight: bold;
+    text-shadow: 3px 4px rgba(122, 5, 5, 0.979);
+}
+
+@media (min-width: 960px) and (max-width: 1200px){
+    .brand{
+        font-size: 1.3em;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 960px){
+    .brand{
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 340px){
+    .brand{
+        font-size: 0.7em;
+    }
+}
+
+.sidebar{
+    min-height: 100vh;
+}
+
+@media (max-width: 767px){
+    .sidebar{
+        min-height: 50vh;
+    }
+}
+
+i{
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+/*
+***************
+end sidenavbar
+*************** 
+*/
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+  
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}
+
+.main-content{
+    padding: 20px 25px 25px 40px;
+    border: 1px solid rgb(165, 165, 165);
+    margin-top: 50px;
+    box-shadow: 0px 0px 5px 3px rgba(255, 217, 0, 0.836);
+}
+
+.main-content h2{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+form{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.screenshot-btn{
+    width: 75px;
+    background: rgb(190, 190, 190);
+    color: rgb(0, 0, 0);
+}
+
+#assignee{
+    text-transform: capitalize;
+}

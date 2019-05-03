@@ -1,0 +1,102 @@
+.brand {
+    color: rgb(245, 245, 220);
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    letter-spacing: 8px;
+    font-weight: bold;
+    text-shadow: 3px 4px rgba(122, 5, 5, 0.979);
+}
+
+@media (min-width: 960px) and (max-width: 1200px){
+    .brand{
+        font-size: 1.3em;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 960px){
+    .brand{
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 340px){
+    .brand{
+        font-size: 0.7em;
+    }
+}
+
+.sidebar{
+    min-height: 100vh;
+}
+
+@media (max-width: 767px){
+    .sidebar{
+        min-height: 50vh;
+    }
+}
+
+i{
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+/*
+***************
+end sidenavbar
+*************** 
+*/
+
+table{
+    margin-top: 50px;
+}
+
+.user-name{
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 3em;
+    font-family: 'Pacifico', cursive;
+    text-transform: capitalize;
+}
+
+.user-name:hover{
+    color: rgba(190, 77, 255, 0.911);
+}
+
+.user-work{
+    text-align: center;
+    color: rgb(129, 129, 129);
+}
+
+.user-welcome{
+    text-align: justify;
+    margin-top: 20px;
+    font-family: 'Comfortaa', cursive;
+    font-size: 18px;
+}
+
+.list-desc{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px;
+}
+
+table{
+    margin: 40px;
+    text-align: center;
+}
+
+th{
+    font-size: 20px;
+}
+
+table i{
+    color: black;
+    margin: 10px;
+}
+
+table i:hover{
+    color: rgb(40, 42, 207);
+}

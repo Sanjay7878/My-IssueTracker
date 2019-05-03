@@ -1,0 +1,99 @@
+.singup-form{
+    padding-top:4.2rem;
+    padding-bottom:4.2rem;
+    background:rgba(0, 0, 0, 0.76);
+}
+
+a{
+    text-decoration:none !important;
+}
+
+h1,h2,h3{
+    font-family: 'Kaushan Script', cursive;
+}
+
+.myform{
+   position: relative;
+   display: -ms-flexbox;
+   display: flex;
+   padding: 1rem;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   width: 100%;
+   pointer-events: auto;
+   background-color: #fff;
+   background-clip: padding-box;
+   border: 1px solid rgba(0,0,0,.2);
+   border-radius: 1.1rem;
+   outline: 0;
+   max-width: 700px;
+}
+
+.tx-tfm{
+    text-transform:uppercase;
+}
+
+.mybtn{
+    border-radius:50px;
+}
+
+.span-or {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #fff;
+    width: 50px;
+    text-align: center;
+}
+
+.hr-or {
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+form .error {
+    color: #ff0000;
+}
+
+
+.container-full{
+    width: 100%;
+}
+
+.navbar{
+    background: rgb(41, 41, 41);
+}
+
+.navbar-brand{
+    color: rgb(245, 245, 220);
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 8px;
+    font-weight: bold;
+    text-shadow: 3px 4px rgba(122, 5, 5, 0.979);
+}
+
+.navbar-brand:hover{
+    color: rgb(131, 241, 190);
+}
+
+@media (max-width: 600px){
+    .navbar-brand{
+        font-size: 1.4em;
+        font-weight: bold;
+    }
+
+    .container-full{
+            width: 100%;
+        }
+    }
+
+@media (max-width: 340px){
+    .navbar-brand{
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+}
