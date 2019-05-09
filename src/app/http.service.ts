@@ -109,7 +109,6 @@ export class HttpService {
       .set('description', data.description)
       .set('issueLocation', data.issueLocation)
       .set('issueType', data.issueType)
-      .set('screenshots', data.screenshots)
       .set('assignee', data.assignee)
 
       return this.http.post(`${this.url}/records/create/issue`, params)

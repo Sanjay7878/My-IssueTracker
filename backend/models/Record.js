@@ -20,8 +20,7 @@ let newRecord =  new Schema(
             inTest: {type: Boolean, default: false},
             closed: {type: Boolean, default: false}
         },
-        screenshots: [],
-        watchers: []
+        watcher: []
     }
 )
 
