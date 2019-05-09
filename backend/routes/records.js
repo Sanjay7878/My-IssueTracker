@@ -67,7 +67,7 @@ module.exports.setRouter = (app) => {
      //params: screenshot: File, issueId
      app.post(`${baseUrl}/add/screenshot`,recordController.multerUpload.single('screenshots'), recordController.addScreenshot)
       
-
+         
      //params: filename, issueId
      app.post(`${baseUrl}/delete/screenshot`, recordController.deleteScreenshot)
 
