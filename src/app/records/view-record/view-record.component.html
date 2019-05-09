@@ -70,8 +70,9 @@
                     <p style="text-align:right">The type of Issue is --- {{currentIssue.issueType}} <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></p>
                   </div>
                 </div>
+                <br>
                 <div *ngIf="screenshot">
-                  <img src='http://localhost:3000/appController/screenshots/{{screenshot}}' alt="..." class="img-thumbnail">
+                  <img src='{{screenshot}}' alt="..." class="img-thumbnail">
                 </div>
                 <hr>
                 <div class="container" id="comments">

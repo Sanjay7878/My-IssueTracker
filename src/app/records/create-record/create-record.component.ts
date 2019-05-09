@@ -46,6 +46,7 @@ export class CreateRecordComponent implements OnInit {
     this.userName = Cookie.get('fullName')
     this.getAllUsers()
   }
+  
   onFileSelected(event){
     this.screenshots = event.target.files[0]
   }
@@ -69,6 +70,8 @@ export class CreateRecordComponent implements OnInit {
     )
   }
 
+
+
   public createNewIssue: any = ()=>{
     if(!this.title){
       this.toastr.infoToastr("Please provide a issue title")
@@ -79,18 +82,17 @@ export class CreateRecordComponent implements OnInit {
     } else if(!this.issueType){
       this.toastr.infoToastr("Select the type of issue occured")
     }else {
-      this.onUpload()
       let data = {
         title: this.title,
         description: this.description,
         issueLocation: this.issueLocation,
         issueType: this.issueType,
         userId: this.currentUser.userId,
-        assignee: this.assignee
+        assignee: this.assignee,
+        screenshots: this.screenshots
       }
 
-      
-      this._http.createIssue(data).subscribe(
+      this._http.createIssue(this.authToken, data).subscribe(
         (apiResponse)=>{
           if(apiResponse.status === 200){
             console.log(apiResponse)

@@ -86,7 +86,7 @@ let createIssue = (req, res)=>{
                 issueId: shortid.generate(),
                 issueCreatedOn: time.now(),
                 assignee: req.body.assignee,
-                screenshot: req.file
+                screenshots: req.file
             })
             newIssue.status.open = true
             let issueType = (req.body == undefined || req.body.issueType == null || req.body.issueType == '')? []: req.body.issueType.split(',')

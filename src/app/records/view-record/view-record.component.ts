@@ -23,7 +23,7 @@ export class ViewRecordComponent implements OnInit {
   public userComment: String
   public currentComments: any = []
   public commentsPageValue: Number = 0
-  public screenshot: File
+  public screenshot: String
   public allStatus : any = []
 
   constructor(public _route: ActivatedRoute, 
@@ -47,6 +47,10 @@ export class ViewRecordComponent implements OnInit {
         if(apiResponse.status === 200){
           this.currentIssue = apiResponse.data
           this.allStatus = this.currentIssue.status
+          for(let x of this.currentIssue.screenshots){
+            let screenshotPath = "http://trackerapi.sanjayinfotechy.com/"
+            this.screenshot = screenshotPath + x.path
+          }
             //condition to find the current status of the issue
             if(this.currentIssue.status.open == true){
               this.issueStatus = "Open"

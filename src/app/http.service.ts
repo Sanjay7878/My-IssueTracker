@@ -102,16 +102,17 @@ export class HttpService {
   */
 
 
-  public createIssue(data): Observable<any> {
-    const params = new HttpParams()
-      .set('userId', data.userId)
-      .set('title', data.title)
-      .set('description', data.description)
-      .set('issueLocation', data.issueLocation)
-      .set('issueType', data.issueType)
-      .set('assignee', data.assignee)
+  public createIssue(authToken, data): Observable<any> {
+    const fd = new FormData()
+      fd.set('userId', data.userId)
+      fd.set('title', data.title)
+      fd.set('description', data.description)
+      fd.set('issueLocation', data.issueLocation)
+      fd.set('issueType', data.issueType)
+      fd.set('assignee', data.assignee)
+      fd.append('screenshots', data.screenshots)
 
-      return this.http.post(`${this.url}/records/create/issue`, params)
+      return this.http.post(`${this.url}/records/create/issue?authToken=${authToken}`, fd)
   } // end create new issue
 
   public getCurrentUserIssue(authToken, fullName): Observable<any>{
