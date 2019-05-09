@@ -1,0 +1,38 @@
+Issue Tracker Project
+
+This is a Basic app for tracking all your bug records. User can register for free and start using the app. Users can track their bugs and assign it to a particular user, who is already present in the application database. 
+Project URL: http://issuetracker.sanjayinfotechy.com 
+API Documentation: http://tracker.sanjayinfotechy.com 
+Socket.IO Events Documentation: http://trackerevent.sanjayinfotechy.com 
+Project Git Repository: https://github.com/Sanjay7878/My-IssueTracker
+
+
+Project Flow
+
+One the User Register his/her details, User will be able to login. Upon user login, user will be taken to the dashboard view, where user is welcomed to the application. User will be able to view all his bud recorded in dashboard view. User can on View icon to view the issue details, or edit the issue details, or user can delete the issue by clicking on the relevant icons on the table rows. User can also view all the bugs or issue recorded by other members by c licking on “View All Bugs Recorded” ink on the left navigation bar. User can View individual Bugs recorded. User can edit all the Issue/Bugs recorded. But user won’t be able to delete record created by other users User can view a record and post a comment. User can search for a particular record in his/her dashboard and also in view all bugs recorded page. Upon logout, user will redirected to Home Page
+
+
+Documentation
+
+All the APIs and Events are well documented using npm module apiDoc 
+•	APIDOC - APIDOC of Issue Tracker App backend. 
+• 	EventDoc - EventDoc of Issue Tracker App backend. 
+•	Comments – comments are written for every function
+
+
+Built With
+
+•	Angular - The web framework used for Frontend Design 
+•	NPM - Most of the modules are used 
+•	apiDoc - NPM module to create the apiDoc and eventDoc
+
+
+Authors
+
+•	Initial work – Sanjay C 
+•	Problem Statement - Edwisor 
+
+
+Acknowledgments 
+
+Thanks for Edwisor to review this application. I would like to thank my friends, colleagues for supporting me to develop and deploy this Application.

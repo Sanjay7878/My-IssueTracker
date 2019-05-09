@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const shortid = require('shortid')
-
+const fs = require('fs')
 /*Libraries*/
 const check = require('../libs/check')
 const response = require('../libs/response')
@@ -11,7 +11,7 @@ const time = require('../libs/timeLib')
 /*Models*/
 const UserModel = mongoose.model('User')
 const RecordModel = mongoose.model('Record')
-
+const ScreenshotModel = mongoose.model('Screenshot')
 /**
  * 
  * Multer logic
@@ -76,7 +76,7 @@ let createIssue = (req, res)=>{
     //function to create the issue
     let createNewRecord = (userDetails) =>{
         return new Promise((resolve, reject)=>{
-            upload.single('screenshots')
+            
             
             let newIssue = new RecordModel({
                 title: req.body.title,
@@ -86,7 +86,6 @@ let createIssue = (req, res)=>{
                 issueId: shortid.generate(),
                 issueCreatedOn: time.now(),
                 assignee: req.body.assignee,
-                screenshots: req.file
             })
             newIssue.status.open = true
             let issueType = (req.body == undefined || req.body.issueType == null || req.body.issueType == '')? []: req.body.issueType.split(',')
@@ -120,6 +119,105 @@ let createIssue = (req, res)=>{
         })
 } // end create new issue
 
+let addScreenshot = (req, res)=>{
+    upload.single('screenshots')
+    let newScreenshot = new ScreenshotModel({
+        screenshots: req.file,
+        issueId: req.body.issueId,
+        imageId: shortid.generate(),
+        createdOn: time.now()
+    })
+
+    newScreenshot.save((err, result)=>{
+        if(err){
+            logger.error(err, "recordsController: addscreenshot", 6)
+            let apiResponse = response.generate(true, "Failed to add screenshot", 500, null)
+            res.send(apiResponse)
+        } else if(check.isEmpty(result)){
+            logger.error("No Screenshot attached to save", "recordsController: addscreenshot", 6)
+            let apiResponse = response.generate(true, "No Screenshot attached to save", 404, null)
+            res.send(apiResponse)
+        }else {
+            let apiResponse = response.generate(false, "Screenshot attached", 200, result)
+            res.send(apiResponse)
+        }
+    })
+} // end add screenshot
+
+/** 
+let deleteScreenshot = (req, res) =>{
+    
+    let findCurrentIssue = () =>{
+        return new Promise((resolve, reject)=>{
+            RecordModel.findOne({issueId: req.body.issueId}, (err, issueDetails)=>{
+                if(err){
+                    logger.error(err.message, ' recordsController: deleteScreenshot, findCurrentIssue', 8)
+                    let apiResponse = response.generate(true, "Failed to Delete Screenshot", 500, null)
+                    reject(apiResponse)
+                } else if(check.isEmpty(issueDetails)){
+                    logger.error("No issue Found", ' recordsController: deleteScreenshot, findCurrentIssue', 8)
+                    let apiResponse = response.generate(true, "No issue Found", 404, null)
+                    reject(apiResponse)
+                } else {
+                    resolve(issueDetails.issueId)
+                }
+            })
+
+        })
+    } // end find current issue
+
+    let findCurrentScreenshot = (id) =>{
+        return new Promise((resolve, reject)=>{
+            ScreenshotModel.find({issueId: req.body.issueId}, (err, screenshots)=>{
+                if(err){
+                    logger.error(err.message, ' recordsController: deleteScreenshot, deleteCurrentScreenshot', 8)
+                    let apiResponse = response.generate(true, "Failed to Delete Screenshot", 500, null)
+                    reject(apiResponse)
+                } else if(check.isEmpty(screenshots)){
+                    logger.error("No Screenshot Found", ' recordsController: deleteScreenshot, deleteCurrentScreenshot', 8)
+                    let apiResponse = response.generate(true, "No Screenshot Found", 404, null)
+                    reject(apiResponse)
+                } else {
+                    resolve(screenshots)
+                }
+            })
+        })
+    } // end find current screenshot
+
+    let deleteCurrentScreenshot = (screenshotDetails) =>{
+        return new Promise((resolve, reject)=>{
+            ScreenshotModel.findOneAndDelete({imageId: req.imageId}, (err, result)=>{
+                if(err){
+                    logger.error(err.message, ' recordsController: deleteScreenshot, deleteCurrentScreenshot', 8)
+                    let apiResponse = response.generate(true, "Failed to Delete Screenshot", 500, null)
+                    reject(apiResponse)
+                } else if(check.isEmpty(result)){
+                    logger.error("No Screenshot Found", ' recordsController: deleteScreenshot, deleteCurrentScreenshot', 8)
+                    let apiResponse = response.generate(true, "No Screenshot Found", 404, null)
+                    reject(apiResponse)
+                } else {
+                    console.log(result.path)
+                    resolve(result)
+                }
+            })
+        })
+    } // end find current screenshot
+
+    findCurrentIssue()
+        .then(findCurrentScreenshot)
+        .then(deleteCurrentScreenshot)
+        .then((resolve)=>{
+            let apiResponse = response.generate(false, "Screenshot Deleted", 200, resolve)
+            res.send(apiResponse)
+        })
+        .catch((err)=>{
+            res.send(err)
+            console.log(err)
+        })
+
+} // end delete screenshot
+
+*/
 let editIssue = (req, res)=>{
 
     //function to find the user's specific issue that needs to be edited
@@ -334,6 +432,7 @@ let viewSingleIssue = (req, res)=>{
 
 module.exports = {
     createIssue: createIssue,
+    addScreenshot: addScreenshot,
     editIssue: editIssue,
     deleteIssue: deleteIssue,
     getPaginatedIssues: getPaginatedIssues,
