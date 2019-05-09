@@ -434,7 +434,6 @@ let viewSingleIssue = (req, res)=>{
 
 module.exports = {
     createIssue: createIssue,
-    addScreenshot: addScreenshot,
     editIssue: editIssue,
     deleteIssue: deleteIssue,
     getPaginatedIssues: getPaginatedIssues,
