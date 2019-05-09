@@ -55,8 +55,8 @@
                             <div class="row" >
                                 <div class="col-md-6">
                                     <div class="form-group" enctype="multipart/form-data">
-                                        <p>Attach Screenshot</p>
-                                        <input type="file" name="screenshots" class="form-control" [(ngModel)]="screenshots" (change)="onFileSelected($event)" (click)="onUpload()" id="screenshots" style="width: 250px">
+                                        <label>Attach Screenshot</label>
+                                        <input type="file"  name="screenshots" [(ngModel)]="screenshots" class="form-control" style="width: 250px">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

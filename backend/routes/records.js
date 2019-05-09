@@ -14,7 +14,7 @@ module.exports.setRouter = (app) => {
 
     //params: userId, title, description, issueLocation
     //optional params: issueType, screenshots, assignee, watchers, comments
-    app.post(`${baseUrl}/create/issue`, recordController.createIssue)
+    app.post(`${baseUrl}/create/issue`,recordController.multerUpload.single('screenshots'), recordController.createIssue)
     /**
      * @api {post} http://trackerapi.sanjayinfotechy.com/api/v1/records/create/issue Create a new issue
      * @apiVersion 0.0.1
@@ -63,11 +63,11 @@ module.exports.setRouter = (app) => {
         * "data": null
         * }
      */
-      
+      /*
      //params: screenshot: File, issueId
-     app.post(`${baseUrl}/add/screenshot`,recordController.multerUpload.single('screenshots'), recordController.addScreenshot)
+     app.post(`${baseUrl}/add/screenshot`, recordController.addScreenshot)
       
-       /*
+       
      //params: filename, issueId
       app.post(`${baseUrl}/delete/screenshot`, recordController.deleteScreenshot)
          */

@@ -77,7 +77,7 @@ let createIssue = (req, res)=>{
     let createNewRecord = (userDetails) =>{
         return new Promise((resolve, reject)=>{
             
-            
+            upload.single('screenshots')
             let newIssue = new RecordModel({
                 title: req.body.title,
                 description: req.body.description,
@@ -86,6 +86,7 @@ let createIssue = (req, res)=>{
                 issueId: shortid.generate(),
                 issueCreatedOn: time.now(),
                 assignee: req.body.assignee,
+                screenshot: req.file
             })
             newIssue.status.open = true
             let issueType = (req.body == undefined || req.body.issueType == null || req.body.issueType == '')? []: req.body.issueType.split(',')
@@ -119,6 +120,7 @@ let createIssue = (req, res)=>{
         })
 } // end create new issue
 
+/**
 let addScreenshot = (req, res)=>{
     upload.single('screenshots')
     let newScreenshot = new ScreenshotModel({
@@ -144,7 +146,7 @@ let addScreenshot = (req, res)=>{
     })
 } // end add screenshot
 
-/** 
+ 
 let deleteScreenshot = (req, res) =>{
     
     let findCurrentIssue = () =>{

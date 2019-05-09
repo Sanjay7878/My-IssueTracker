@@ -59,6 +59,7 @@ export class CreateRecordComponent implements OnInit {
       { reportProgress: true, observe: 'events'}
     ).subscribe(
       (events)=>{
+        console.log(events)
         if(events.type === HttpEventType.UploadProgress){
           console.log('upload Progress: '+ Math.round(events.loaded / events.total * 100) + '%')
         }else if(events.type === HttpEventType.Response){
@@ -67,6 +68,7 @@ export class CreateRecordComponent implements OnInit {
       }
     )
   }
+
   public createNewIssue: any = ()=>{
     if(!this.title){
       this.toastr.infoToastr("Please provide a issue title")
@@ -84,9 +86,10 @@ export class CreateRecordComponent implements OnInit {
         issueLocation: this.issueLocation,
         issueType: this.issueType,
         userId: this.currentUser.userId,
-        assignee: this.assignee,
-        screenshots: this.screenshots
+        assignee: this.assignee
       }
+
+      
       this._http.createIssue(data).subscribe(
         (apiResponse)=>{
           if(apiResponse.status === 200){
