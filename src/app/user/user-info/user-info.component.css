@@ -68,6 +68,7 @@ thead{
 
 td{
     margin-top:15px;
+    text-transform: capitalize;
 }
 
 .edit-btn{

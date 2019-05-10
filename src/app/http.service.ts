@@ -74,12 +74,12 @@ export class HttpService {
   } // end get user Details
 
   public getSingleUserDetails(authToken, userId): Observable<any>{
-
     return this.http.get(`${this.url}/user/${userId}/get?authToken=${authToken}`)
   } // end get single user info
 
   public getAlluserDetails(authToken): Observable<any>{
-    return this.http.get(`${this.url}/user/get/all?authToken=${authToken}`, )
+    console.log(authToken)
+    return this.http.get(`${this.url}/user/get/all?authToken=${authToken}`)
   } // end get all user details
 
   public setUserInfoToLocalStorage: any = (data) =>{

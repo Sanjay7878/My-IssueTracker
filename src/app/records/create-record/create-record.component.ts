@@ -114,7 +114,7 @@ export class CreateRecordComponent implements OnInit {
   } // end create new issue
 
   public getAllUsers: any = () =>{
-    this._http.getAlluserDetails(Cookie.get('authToken')).subscribe(
+    this._http.getAlluserDetails(this.authToken).subscribe(
       (apiResponse)=>{
         if(apiResponse.status === 200){
           let allUsers = apiResponse.data
@@ -155,6 +155,5 @@ export class CreateRecordComponent implements OnInit {
       }
     )
   } // end logout function
-
   
 }

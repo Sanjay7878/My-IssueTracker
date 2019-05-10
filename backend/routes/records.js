@@ -11,7 +11,6 @@ module.exports.setRouter = (app) => {
 
     let baseUrl = `${appConfig.apiVersion}/records`
 
-
     //params: userId, title, description, issueLocation
     //optional params: issueType, screenshots, assignee, watchers, comments
     app.post(`${baseUrl}/create/issue`,recordController.multerUpload.single('screenshots'), recordController.createIssue)
@@ -63,14 +62,7 @@ module.exports.setRouter = (app) => {
         * "data": null
         * }
      */
-      /*
-     //params: screenshot: File, issueId
-     app.post(`${baseUrl}/add/screenshot`, recordController.addScreenshot)
-      
-       
-     //params: filename, issueId
-      app.post(`${baseUrl}/delete/screenshot`, recordController.deleteScreenshot)
-         */
+
     //params: userId, issueId
     app.post(`${baseUrl}/delete/issue`,auth.isAuthorized, recordController.deleteIssue)
     /**
