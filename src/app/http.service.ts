@@ -78,7 +78,6 @@ export class HttpService {
   } // end get single user info
 
   public getAlluserDetails(authToken): Observable<any>{
-    console.log(authToken)
     return this.http.get(`${this.url}/user/get/all?authToken=${authToken}`)
   } // end get all user details
 

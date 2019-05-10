@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const shortid = require('shortid')
 const fs = require('fs')
+
 /*Libraries*/
 const check = require('../libs/check')
 const response = require('../libs/response')
@@ -11,7 +12,6 @@ const time = require('../libs/timeLib')
 /*Models*/
 const UserModel = mongoose.model('User')
 const RecordModel = mongoose.model('Record')
-const ScreenshotModel = mongoose.model('Screenshot')
 /**
  * 
  * Multer logic
